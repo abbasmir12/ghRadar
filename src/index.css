@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333333;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00d4ff;
+}
+
+/* Gradient background animation */
+.gradient-bg {
+    background: linear-gradient(-45deg, #0a0a0a, #1a1a1a, #0a0a0a, #2a2a2a);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Neon glow effects */
+.neon-glow {
+    box-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+}
+
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.to-neon-purple\/10 {
+    --tw-gradient-to: rgb(18 15 20) var(--tw-gradient-to-position);
+}
+
+.from-neon-blue\/10 {
+    --tw-gradient-from: rgb(0 161 255 / 5%) var(--tw-gradient-from-position);
+
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    /* box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3); */
+    border: 1px solid white;
+}
