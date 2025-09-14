@@ -1,4 +1,7 @@
-# 🎯 GitHub Radar
+![Screenshot](images/screenshot301.png)
+
+# 🎯 ghRadar (GitHub Profile Explorer)
+
 
 > **A comprehensive GitHub analytics platform with advanced repository insights, profile exploration, and intelligent comparison tools.**
 
@@ -7,9 +10,8 @@
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-10.16.4-0055FF?style=for-the-badge&logo=framer)](https://www.framer.com/motion/)
 [![GitHub](https://img.shields.io/badge/GitHub_API-v3-181717?style=for-the-badge&logo=github)](https://docs.github.com/en/rest)
 
-<div align="center">
-  <img src="https://github.com/abbasmir12/ghRadar/blob/main/public/logo192.png" alt="GitHub Radar Logo" width="120" height="120">
-  
+
+
   **🚀 Explore • 📊 Analyze • ⚔️ Compare • 🎯 Discover**
   
   [Live Demo](https://your-demo-url.com) • [Report Bug](https://github.com/abbasmir12/ghRadar/issues) • [Request Feature](https://github.com/abbasmir12/ghRadar/issues)
@@ -17,9 +19,9 @@
 
 ---
 
-## 🌟 What is GitHub Radar?
+## 🌟 What is ghRadar?
 
-GitHub Radar is a **next-generation GitHub analytics platform** that transforms how developers explore, analyze, and compare GitHub profiles and repositories. Built with modern web technologies, it provides deep insights through beautiful visualizations, comprehensive analytics, and intelligent comparison tools.
+ghRadar is a **next-generation GitHub analytics platform** that transforms how developers explore, analyze, and compare GitHub profiles and repositories. Built with modern web technologies, it provides deep insights through beautiful visualizations, comprehensive analytics, and intelligent comparison tools.
 
 ### 🎯 **Core Mission**
 Empower developers, recruiters, and tech enthusiasts with **actionable insights** from GitHub data through intuitive visualizations and comprehensive analytics.
