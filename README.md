@@ -328,35 +328,6 @@ npm run deploy
 
 ---
 
-## 🤝 Contributing
-
-We welcome contributions from the community! Here's how you can help:
-
-### **Getting Started**
-1. **Fork the Repository** - Click the fork button on GitHub
-2. **Clone Your Fork** - `git clone https://github.com/yourusername/ghRadar.git`
-3. **Create a Branch** - `git checkout -b feature/amazing-feature`
-4. **Make Changes** - Implement your feature or fix
-5. **Test Thoroughly** - Ensure everything works as expected
-6. **Commit Changes** - `git commit -m 'Add amazing feature'`
-7. **Push to Branch** - `git push origin feature/amazing-feature`
-8. **Open Pull Request** - Submit your changes for review
-
-### **Contribution Guidelines**
-- **Code Style** - Follow existing patterns and use ESLint
-- **Documentation** - Update README and add comments for complex logic
-- **Testing** - Test your changes across different browsers and devices
-- **Performance** - Ensure changes don't negatively impact performance
-
-### **Areas for Contribution**
-- 🐛 **Bug Fixes** - Help identify and fix issues
-- ✨ **New Features** - Add new analytics or visualization features
-- 🎨 **UI/UX Improvements** - Enhance the user interface and experience
-- 📚 **Documentation** - Improve documentation and examples
-- 🔧 **Performance** - Optimize loading times and responsiveness
-
----
-
 ## 📊 Analytics & Insights
 
 ### **Supported Metrics**
@@ -396,4 +367,3 @@ We welcome contributions from the community! Here's how you can help:
 
 ---
 
-Built with ❤️ and modern web technologies
