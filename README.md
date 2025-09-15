@@ -386,19 +386,6 @@ We welcome contributions from the community! Here's how you can help:
 
 ---
 
-## 📄 License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-### **What this means:**
-- ✅ **Commercial Use** - Use in commercial projects
-- ✅ **Modification** - Modify and adapt the code
-- ✅ **Distribution** - Share and distribute freely
-- ✅ **Private Use** - Use for personal projects
-- ❗ **Attribution Required** - Include original license and copyright
-
----
-
 ## 🙏 Acknowledgments
 
 - **GitHub API** for providing the data
