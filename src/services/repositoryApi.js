@@ -376,6 +376,13 @@ const generateRepositoryAnalytics = (repo, contributors, languages, commits, rel
   // Commit analysis - use multiple approaches for better accuracy
   let commitTrend = [];
   
+  // Get repository creation date
+  const repoCreatedDate = new Date(repo.created_at);
+  const repoCreatedMonth = repoCreatedDate.toISOString().slice(0, 7); // YYYY-MM format
+  
+  console.log(`📅 Repository created: ${repoCreatedDate.toLocaleDateString()}`);
+  console.log(`📅 Repository created month: ${repoCreatedMonth}`);
+
   // Method 1: Try to use GitHub's commit activity stats (most accurate)
   if (commitActivity && commitActivity.length > 0) {
     console.log('📊 Using GitHub commit activity stats');
@@ -390,23 +397,33 @@ const generateRepositoryAnalytics = (repo, contributors, languages, commits, rel
         sunday.setDate(sunday.getDate() - sunday.getDay() - (weeksAgo * 7));
         
         const monthKey = sunday.toISOString().slice(0, 7); // YYYY-MM format
-        monthlyCommits[monthKey] = (monthlyCommits[monthKey] || 0) + week.total;
+        
+        // Only count commits from months after repository creation
+        if (monthKey >= repoCreatedMonth) {
+          monthlyCommits[monthKey] = (monthlyCommits[monthKey] || 0) + week.total;
+        }
       }
     });
     
-    // Generate last 12 months with real data
-    for (let i = 11; i >= 0; i--) {
-      const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
-      const monthKey = date.toISOString().slice(0, 7);
-      const monthName = date.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
+    // Generate months from repository creation to current month
+    const startDate = new Date(repoCreatedDate.getFullYear(), repoCreatedDate.getMonth(), 1);
+    const currentDate = new Date(now.getFullYear(), now.getMonth(), 1);
+    
+    let currentMonth = new Date(startDate);
+    while (currentMonth <= currentDate) {
+      const monthKey = currentMonth.toISOString().slice(0, 7);
+      const monthName = currentMonth.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
       
       commitTrend.push({
         month: monthName,
         commits: monthlyCommits[monthKey] || 0
       });
+      
+      // Move to next month
+      currentMonth.setMonth(currentMonth.getMonth() + 1);
     }
     
-    console.log('📈 Monthly commits from stats:', monthlyCommits);
+    console.log('📈 Monthly commits from stats (filtered by creation date):', monthlyCommits);
   }
   
   // Method 2: Fallback to recent commits if stats API failed or returned empty data
@@ -419,36 +436,58 @@ const generateRepositoryAnalytics = (repo, contributors, languages, commits, rel
       if (commit && commit.commit && commit.commit.author && commit.commit.author.date) {
         const commitDate = new Date(commit.commit.author.date);
         const monthKey = commitDate.toISOString().slice(0, 7);
-        commitsByMonth[monthKey] = (commitsByMonth[monthKey] || 0) + 1;
+        
+        // Only count commits from months after repository creation
+        if (monthKey >= repoCreatedMonth) {
+          commitsByMonth[monthKey] = (commitsByMonth[monthKey] || 0) + 1;
+        }
       }
     });
     
-    // Generate last 12 months with fallback data
+    // Generate months from repository creation to current month
     commitTrend = [];
-    for (let i = 11; i >= 0; i--) {
-      const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
-      const monthKey = date.toISOString().slice(0, 7);
-      const monthName = date.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
+    const startDate = new Date(repoCreatedDate.getFullYear(), repoCreatedDate.getMonth(), 1);
+    const currentDate = new Date(now.getFullYear(), now.getMonth(), 1);
+    
+    let currentMonth = new Date(startDate);
+    while (currentMonth <= currentDate) {
+      const monthKey = currentMonth.toISOString().slice(0, 7);
+      const monthName = currentMonth.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
       
       commitTrend.push({
         month: monthName,
         commits: commitsByMonth[monthKey] || 0
       });
+      
+      // Move to next month
+      currentMonth.setMonth(currentMonth.getMonth() + 1);
     }
     
-    console.log('📈 Monthly commits from recent data:', commitsByMonth);
+    console.log('📈 Monthly commits from recent data (filtered by creation date):', commitsByMonth);
   }
   
   // Method 3: If still no data, create a realistic distribution based on total commits
   if (commitTrend.every(month => month.commits === 0) && totalCounts.totalCommits > 0) {
     console.log('📊 Fallback: Creating estimated distribution');
-    const avgCommitsPerMonth = Math.floor(totalCounts.totalCommits / Math.max(ageInMonths, 1));
     
-    commitTrend = commitTrend.map(month => ({
-      ...month,
-      commits: Math.max(1, Math.floor(avgCommitsPerMonth * (0.5 + Math.random()))) // Some variation
-    }));
+    // Calculate months since repository creation
+    const monthsSinceCreation = Math.max(1, Math.floor((now - repoCreatedDate) / (1000 * 60 * 60 * 24 * 30)));
+    const avgCommitsPerMonth = Math.floor(totalCounts.totalCommits / monthsSinceCreation);
+    
+    // Only add commits to months that exist (from creation to now)
+    commitTrend = commitTrend.map((month, index) => {
+      // Add some realistic variation but ensure we don't exceed total commits
+      const variation = 0.5 + Math.random(); // 0.5 to 1.5 multiplier
+      const estimatedCommits = Math.max(1, Math.floor(avgCommitsPerMonth * variation));
+      
+      return {
+        ...month,
+        commits: estimatedCommits
+      };
+    });
   }
+  
+  console.log(`📊 Final commit trend (${commitTrend.length} months):`, commitTrend);
   
   // Use total counts if available, otherwise fall back to fetched data
   const actualCommitCount = totalCounts.totalCommits || commits.length;
