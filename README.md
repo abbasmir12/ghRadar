@@ -14,7 +14,7 @@
 
   **🚀 Explore • 📊 Analyze • ⚔️ Compare • 🎯 Discover**
   
-  [Live Demo](https://your-demo-url.com) • [Report Bug](https://github.com/abbasmir12/ghRadar/issues) • [Request Feature](https://github.com/abbasmir12/ghRadar/issues)
+   • [Report Bug](https://github.com/abbasmir12/ghRadar/issues) • [Request Feature](https://github.com/abbasmir12/ghRadar/issues)
 </div>
 
 ---
@@ -401,41 +401,12 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## 🙏 Acknowledgments
 
-### **Technologies & Libraries**
-- **[GitHub API](https://docs.github.com/en/rest)** - Comprehensive GitHub data access
-- **[React](https://reactjs.org/)** - Component-based UI framework
-- **[Framer Motion](https://www.framer.com/motion/)** - Smooth animations and transitions
-- **[Recharts](https://recharts.org/)** - Beautiful and customizable charts
-- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
-- **[Lucide React](https://lucide.dev/)** - Clean and consistent icons
-
-### **Inspiration & Resources**
-- **GitHub's Design System** - Color schemes and UI patterns
-- **Developer Community** - Feedback and feature suggestions
-- **Open Source Projects** - Best practices and implementation patterns
+- **GitHub API** for providing the data
+- **Framer Motion** for smooth animations
+- **Recharts** for beautiful charts
+- **Tailwind CSS** for rapid styling
+- **Lucide** for clean icons
 
 ---
 
-## 📞 Support & Contact
-
-### **Get Help**
-- 📖 **Documentation** - Check this README and inline code comments
-- 🐛 **Bug Reports** - [Create an issue](https://github.com/abbasmir12/ghRadar/issues/new?template=bug_report.md)
-- 💡 **Feature Requests** - [Request a feature](https://github.com/abbasmir12/ghRadar/issues/new?template=feature_request.md)
-- 💬 **Discussions** - [Join the conversation](https://github.com/abbasmir12/ghRadar/discussions)
-
-### **Connect**
-- **GitHub** - [@abbasmir12](https://github.com/abbasmir12)
-- **Project Repository** - [ghRadar](https://github.com/abbasmir12/ghRadar)
-
----
-
-<div align="center">
-
-**⭐ Star this repository if you find it helpful!**
-
-**Built with ❤️ by developers, for developers**
-
-[⬆ Back to Top](#-github-radar)
-
-</div>
+Built with ❤️ and modern web technologies

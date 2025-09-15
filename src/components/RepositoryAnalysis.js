@@ -340,11 +340,11 @@ const RepositoryAnalysis = () => {
             {/* Tab Navigation */}
             <div className="flex flex-wrap gap-2 border-b border-dark-border">
               {[
-                { key: 'overview', label: 'Overview', icon: '📊' },
-                { key: 'analytics', label: 'Analytics', icon: '📈' },
-                { key: 'contributors', label: 'Contributors', icon: '👥' },
-                { key: 'activity', label: 'Activity', icon: '⚡' },
-                { key: 'insights', label: 'Insights', icon: '🔍' }
+                { key: 'overview', label: 'Overview', icon: '' },
+                { key: 'analytics', label: 'Analytics', icon: '' },
+                { key: 'contributors', label: 'Contributors', icon: '' },
+                { key: 'activity', label: 'Activity', icon: '' },
+                { key: 'insights', label: 'Insights', icon: '' }
               ].map(tab => (
                 <motion.button
                   key={tab.key}
@@ -527,25 +527,8 @@ const RepositoryOverview = ({ repoData }) => {
 const RepositoryAnalyticsTab = ({ repoData }) => {
   // Create realistic commit trend data based on total commits and monthly average
   const monthlyAverage = repoData.analytics.commits.averagePerMonth;
-  const totalCommits = repoData.analytics.commits.total;
-  
-  // Generate last 12 months with realistic variation
-  const commitTrendData = [];
-  const currentDate = new Date();
-  
-  for (let i = 11; i >= 0; i--) {
-    const date = new Date(currentDate.getFullYear(), currentDate.getMonth() - i, 1);
-    const monthName = date.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
-    
-    // Create realistic variation around the monthly average (±30%)
-    const variation = 0.7 + (Math.random() * 0.6); // 0.7 to 1.3 multiplier
-    const monthlyCommits = Math.round(monthlyAverage * variation);
-    
-    commitTrendData.push({
-      month: monthName,
-      commits: Math.max(monthlyCommits, 1) // Ensure at least 1 commit
-    });
-  }
+  // Use the commit trend data from the analytics (already processed in repositoryApi.js)
+  const commitTrendData = repoData.analytics.commits.trend || [];
 
   return (
     <motion.div
